@@ -1,25 +1,14 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { BriefcaseBusiness, Code, Send, Moon, Sun } from "lucide-react";
 
 export default function StickyNav() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
   const toggleDarkMode = () => {
-    setDarkMode((prevMode) => {
-      const newMode = !prevMode;
-      // Save preference to local storage
-      localStorage.setItem("dark-mode", newMode);
-      // Apply or remove dark mode
-      if (newMode) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-      return newMode;
-    });
+    setDarkMode((prevMode) => !prevMode);
   };
 
   const scrollToSection = (id) => {

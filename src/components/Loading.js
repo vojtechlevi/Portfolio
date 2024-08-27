@@ -1,26 +1,7 @@
 "use client";
 import React from "react";
-import { useEffect, useState } from "react";
 
 const Loading = () => {
-  const [darkMode, setDarkMode] = useState(() => {
-    // Check local storage for saved dark mode preference
-    const savedMode = localStorage.getItem("dark-mode");
-    // Check system preference
-    const systemPrefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)"
-    ).matches;
-    // Determine initial mode
-    return savedMode === "true" || (savedMode === null && systemPrefersDark);
-  });
-
-  useEffect(() => {
-    // Apply dark mode class based on state
-    document.documentElement.classList.toggle("dark", darkMode);
-    // Save preference to local storage
-    localStorage.setItem("dark-mode", darkMode);
-  }, [darkMode]);
-
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
       <div className="flex flex-col items-center">
