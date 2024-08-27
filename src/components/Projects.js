@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Projects() {
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div id="projects" className="container mx-auto px-4 py-12">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
         My Projects
       </h2>
@@ -18,6 +18,8 @@ export default function Projects() {
             <Image
               src={project.image}
               alt={project.title}
+              width={500}
+              height={500}
               className="w-full h-48 object-cover rounded-md"
             />
             <h3 className="text-xl md:text-2xl mt-4">{project.title}</h3>
@@ -31,14 +33,14 @@ export default function Projects() {
 
 const projects = [
   {
-    title: "Project One",
-    description: "This is a project",
-    image: "/images/project1.jpg",
+    name: "Project 1",
+    description: "Description of Project 1",
+    video: "/videos/project1.mp4",
   },
   {
-    title: "Project Two",
-    description: "This is another project",
-    image: "/images/project2.jpg",
+    name: "Project 2",
+    description: "Description of Project 2",
+    video: "/videos/project2.mp4",
   },
-  // Lägg till fler projekt här
+  // Add more projects as needed
 ];
