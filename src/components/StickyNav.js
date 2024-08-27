@@ -7,6 +7,14 @@ import { BriefcaseBusiness, Code, Send, Moon, Sun } from "lucide-react";
 export default function StickyNav() {
   const [darkMode, setDarkMode] = useState(true);
 
+  useEffect(() => {
+    // Kolla och tillämpa dark mode när sidan laddas, men endast på klienten
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
   const toggleDarkMode = () => {
     setDarkMode((prevMode) => !prevMode);
   };

@@ -14,7 +14,7 @@ export default function Hero() {
       <motion.h1
         initial={{ opacity: 0, y: -50 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }}
-        transition={{ duration: 2 }}
+        transition={{ duration: 0.5 }}
         className="text-4xl md:text-6xl lg:text-7xl font-bold"
       >
         Hello!
@@ -22,7 +22,7 @@ export default function Hero() {
       <motion.p
         initial={{ opacity: 0, y: +50 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: +50 }}
-        transition={{ delay: 0.5, duration: 2 }}
+        transition={{ delay: 0.5, duration: 0.8 }}
         className="mt-4 text-base md:text-lg lg:text-2xl"
       >
         I&apos;m a Web Developer specializing in building awesome websites.
