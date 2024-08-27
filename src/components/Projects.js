@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Projects() {
   return (
@@ -14,7 +15,7 @@ export default function Projects() {
             key={index}
             className="bg-gray-800 p-6 rounded-lg shadow-lg"
           >
-            <img
+            <Image
               src={project.image}
               alt={project.title}
               className="w-full h-48 object-cover rounded-md"

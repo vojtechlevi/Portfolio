@@ -18,7 +18,7 @@ export default function Hero() {
         transition={{ delay: 0.5, duration: 1 }}
         className="mt-4 text-base md:text-lg lg:text-2xl"
       >
-        I'm a Web Developer specializing in building awesome websites.
+        I&apos;m a Web Developer specializing in building awesome websites.
       </motion.p>
     </div>
   );
