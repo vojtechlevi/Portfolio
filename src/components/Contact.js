@@ -8,16 +8,16 @@ export default function Contact() {
         <input
           type="text"
           placeholder="Your Name"
-          className="w-full p-3 mb-4 bg-gray-800 text-white rounded-lg"
+          className="w-full p-3 mb-4 rounded-lg"
         />
         <input
           type="email"
           placeholder="Your Email"
-          className="w-full p-3 mb-4 bg-gray-800 text-white rounded-lg"
+          className="w-full p-3 mb-4 rounded-lg"
         />
         <textarea
           placeholder="Your Message"
-          className="w-full p-3 mb-4 bg-gray-800 text-white rounded-lg"
+          className="w-full p-3 mb-4 rounded-lg"
         ></textarea>
         <button
           type="submit"

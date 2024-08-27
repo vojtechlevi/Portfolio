@@ -1,7 +1,27 @@
 "use client";
-import { BriefcaseBusiness, Code, Send } from "lucide-react";
+import { motion } from "framer-motion";
+import { useState } from "react";
+
+import { BriefcaseBusiness, Code, Send, Moon, Sun } from "lucide-react";
 
 export default function StickyNav() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode((prevMode) => {
+      const newMode = !prevMode;
+      // Save preference to local storage
+      localStorage.setItem("dark-mode", newMode);
+      // Apply or remove dark mode
+      if (newMode) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+      return newMode;
+    });
+  };
+
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
@@ -10,7 +30,12 @@ export default function StickyNav() {
   };
 
   return (
-    <div className="gap-4 py-4 fixed top-1/2 left-0 transform -translate-y-1/2 z-50 flex flex-col bg-gray-800 text-white rounded-r-lg shadow-lg overflow-hidden w-12 hover:w-48 transition-all duration-300 ease-in-out group">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 2 }}
+      className="gap-4 py-4 fixed top-1/2 left-0 transform -translate-y-1/2 z-50 flex flex-col dark:bg-background-darkcontainer bg-white dark:text-text-dark rounded-r-lg shadow-lg overflow-hidden w-12 hover:w-48 transition-all duration-300 ease-in-out group"
+    >
       {/* Projects Button */}
       <button
         id="projects"
@@ -21,8 +46,9 @@ export default function StickyNav() {
           py-2
           pl-4
           pr-2
-          hover:bg-gray-700
-          transition
+          dark:hover:bg-[#2e2e2e]
+          hover:bg-[#dddddd]
+          
           relative
           w-full
         "
@@ -55,8 +81,8 @@ export default function StickyNav() {
           py-2
           pl-4
           pr-2
-          hover:bg-gray-700
-          transition
+          dark:hover:bg-[#2e2e2e]
+          hover:bg-[#eeeeee]
           relative
           w-full
         "
@@ -89,8 +115,8 @@ export default function StickyNav() {
           py-2
           pl-4
           pr-2
-          hover:bg-gray-700
-          transition
+          dark:hover:bg-[#2e2e2e]
+          hover:bg-[#eeeeee]
           relative
           w-full
         "
@@ -113,6 +139,34 @@ export default function StickyNav() {
           Contact
         </span>
       </button>
-    </div>
+      {/* Dark Mode Toggle */}
+      <button
+        onClick={toggleDarkMode}
+        className=" flex items-center py-2 px-4 hover:bg-[#eeeeee] dark:hover:bg-[#2e2e2e]"
+      >
+        {darkMode ? (
+          <Moon className="flex-shrink-0" size={20} />
+        ) : (
+          <Sun className="flex-shrink-0" size={20} />
+        )}{" "}
+        {/* Dark mode icon (sun/moon) */}
+        <p
+          className="
+            ml-2
+            opacity-0
+            transform
+            -translate-x-2
+            group-hover:opacity-100
+            group-hover:translate-x-0
+            transition-all
+            duration-300
+            ease-in-out
+            whitespace-nowrap
+          "
+        >
+          {darkMode ? "Light Mode" : "Dark Mode"}
+        </p>
+      </button>
+    </motion.div>
   );
 }

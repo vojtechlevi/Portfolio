@@ -21,8 +21,12 @@ const skills = [
 
 export default function Skills() {
   return (
-    <div id="skills" className=" container mx-auto shadow-lg">
-      <h2 className="text-4xl font-bold mb-8 text-center">My Skills</h2>
+    <div id="skills" className="h-screen justify-center flex flex-col mx-auto">
+      <h2 className="text-4xl font-bold mb-8 text-center">Tech Stack</h2>
+      <p className="text-center mb-6 text-sm md:text-lg">
+        These are some of the technologies I am familiar with. <br />
+        I'm always excited to learn and try out new stuff!
+      </p>
       <div className="flex gap-4 flex-wrap items-center justify-center ">
         {skills.map((skill, index) => (
           <div

@@ -1,30 +1,53 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { useRef } from "react";
+
+import { FaGithub } from "react-icons/fa";
+import { TbWorld } from "react-icons/tb";
 
 export default function Projects() {
+  const videoRefs = useRef([]);
+
+  const handleMouseEnter = (index) => {
+    videoRefs.current[index].play();
+  };
+
+  const handleMouseLeave = (index) => {
+    videoRefs.current[index].pause();
+  };
+
   return (
-    <div id="projects" className="container mx-auto px-4 py-12">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
-        My Projects
-      </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div id="projects" className=" p-10 rounded-lg">
+      <h2 className="text-4xl font-bold mb-8 text-center">Projects</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
-          <motion.div
-            whileHover={{ scale: 1.05 }}
+          <div
             key={index}
-            className="bg-gray-800 p-6 rounded-lg shadow-lg"
+            className=" p-4 group relative rounded-xl hover:scale-105 transform transition-transform duration-200 ease-in-out bg-white dark:bg-background-darkcontainer dark:text-text-dark border dark:border-background-darkborder "
+            onMouseEnter={() => handleMouseEnter(index)}
+            onMouseLeave={() => handleMouseLeave(index)}
           >
-            <Image
-              src={project.image}
-              alt={project.title}
-              width={500}
-              height={500}
-              className="w-full h-48 object-cover rounded-md"
+            <video
+              ref={(el) => (videoRefs.current[index] = el)}
+              className="w-full object-contain rounded-lg"
+              src={project.video}
+              loop
+              muted
+              onLoadStart={(e) => (e.target.currentTime = 0)}
             />
-            <h3 className="text-xl md:text-2xl mt-4">{project.title}</h3>
-            <p className="mt-2 text-sm md:text-base">{project.description}</p>
-          </motion.div>
+            <div className="mt-4 flex flex-col">
+              <h2 className="text-xl font-bold mb-2 ">{project.name}</h2>
+              <p className="text-xs">{project.description}</p>
+              <div className="flex gap-4 mt-8">
+                <a href={project.github}>
+                  <FaGithub size={16} />
+                </a>
+                <a href={project.website}>
+                  <TbWorld size={16} />
+                </a>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
     </div>
@@ -33,14 +56,24 @@ export default function Projects() {
 
 const projects = [
   {
-    name: "Project 1",
-    description: "Description of Project 1",
-    video: "/videos/project1.mp4",
+    name: "Tesla Clone",
+    description: "Created with ReactJS & Tailwind",
+    video: "/videos/tesla.mov",
+    github: "https://github.com/vojtechlevi/tesla-reactjs",
+    website: "https://tesla-reactjs-seven.vercel.app/",
   },
   {
-    name: "Project 2",
-    description: "Description of Project 2",
-    video: "/videos/project2.mp4",
+    name: "Netflix Clone",
+    description: "Created with ReactJS, Tailwind & Firebase",
+    video: "/videos/netflix.mov",
+    github: "https://github.com/vojtechlevi/netflix-reactjs",
+    website: "https://netflix-reactjs-xi.vercel.app/",
   },
-  // Add more projects as needed
+  {
+    name: "Lindholmen Stories",
+    description: "Created with NextJS, Tailwind & Supabase",
+    video: "/videos/lindholmen.mov",
+    github: "https://github.com/lillastormen/project-lindholmen",
+    website: "https://project-lindholmen-theta.vercel.app/",
+  },
 ];
