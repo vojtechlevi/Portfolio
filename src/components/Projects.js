@@ -30,6 +30,8 @@ export default function Projects() {
               ref={(el) => (videoRefs.current[index] = el)}
               className="w-full object-contain rounded-lg"
               src={project.video}
+              playsInline
+              autoPlay
               loop
               muted
               onLoadStart={(e) => (e.target.currentTime = 0)}
@@ -57,6 +59,7 @@ const projects = [
   {
     name: "Tesla Clone",
     description: "Created with ReactJS & Tailwind",
+    text: "A project crafted to mirror the sleek aesthetics and dynamic features of Tesla's website, highlighting responsive UI components, smooth animations, and a cutting-edge interface. Explore this build to see how ReactJS and Tailwind CSS combine to deliver a fluid, high-performance user experience.",
     video: "/videos/tesla.mov",
     github: "https://github.com/vojtechlevi/tesla-reactjs",
     website: "https://tesla-reactjs-seven.vercel.app/",

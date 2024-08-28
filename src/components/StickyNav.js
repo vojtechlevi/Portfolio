@@ -1,14 +1,15 @@
 "use client";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { BriefcaseBusiness, Code, Send, Moon, Sun } from "lucide-react";
 
 export default function StickyNav() {
   const [darkMode, setDarkMode] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const navRef = useRef(null);
 
   useEffect(() => {
-    // Kolla och tillämpa dark mode när sidan laddas, men endast på klienten
     if (darkMode) {
       document.documentElement.classList.add("dark");
     } else {
@@ -19,6 +20,13 @@ export default function StickyNav() {
     setDarkMode((prevMode) => !prevMode);
   };
 
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
@@ -26,34 +34,45 @@ export default function StickyNav() {
     }
   };
 
+  const toggleNav = () => {
+    setIsExpanded(!isExpanded);
+  };
+
+  const handleClickOutside = (event) => {
+    if (navRef.current && !navRef.current.contains(event.target)) {
+      setIsExpanded(false);
+    }
+  };
+
   return (
     <motion.div
+      ref={navRef}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 2 }}
-      className="gap-4 py-4 fixed top-1/2 left-0 transform -translate-y-1/2 z-50 flex flex-col dark:bg-background-darkcontainer bg-white dark:text-text-dark rounded-r-lg shadow-lg overflow-hidden w-12 hover:w-48 transition-all duration-300 ease-in-out group"
+      className={`gap-4 py-4 px-3 fixed top-96 left-0 transform -translate-y-1/2 z-50 flex flex-col dark:bg-background-darkcontainer bg-white dark:text-text-dark rounded-r-lg shadow-lg overflow-hidden w-12 ${
+        isExpanded ? "w-48" : "w-12"
+      } transition-all duration-300 ease-in-out group lg:hover:w-48`}
+      onClick={toggleNav}
     >
       {/* Projects Button */}
-      <button
-        id="projects"
-        onClick={() => scrollToSection("projects")}
-        className="
+      <div className="flex items-center gap-4 lg:dark:hover:bg-[#2e2e2e] lg:hover:bg-[#dddddd]">
+        <BriefcaseBusiness className="flex-shrink-0" size={20} />
+        <button
+          id="projects"
+          onClick={() => scrollToSection("projects")}
+          className="
           flex
           items-center
           py-2
-          pl-4
           pr-2
-          dark:hover:bg-[#2e2e2e]
-          hover:bg-[#dddddd]
-          
           relative
           w-full
         "
-      >
-        <BriefcaseBusiness className="flex-shrink-0" size={20} />
-        <span
-          className="
-            ml-2
+        >
+          <span
+            className="
+            ml-4
             opacity-0
             transform
             -translate-x-2
@@ -64,30 +83,29 @@ export default function StickyNav() {
             ease-in-out
             whitespace-nowrap
           "
-        >
-          Projects
-        </span>
-      </button>
+          >
+            Projects
+          </span>
+        </button>
+      </div>
 
       {/* Skills Button */}
-      <button
-        onClick={() => scrollToSection("skills")}
-        className="
+      <div className="flex items-center gap-4 lg:dark:hover:bg-[#2e2e2e] lg:hover:bg-[#dddddd]">
+        <Code className="flex-shrink-0" size={20} />
+        <button
+          onClick={() => scrollToSection("skills")}
+          className="
           flex
           items-center
           py-2
-          pl-4
           pr-2
-          dark:hover:bg-[#2e2e2e]
-          hover:bg-[#eeeeee]
           relative
           w-full
         "
-      >
-        <Code className="flex-shrink-0" size={20} />
-        <span
-          className="
-            ml-2
+        >
+          <span
+            className="
+            ml-4
             opacity-0
             transform
             -translate-x-2
@@ -98,30 +116,29 @@ export default function StickyNav() {
             ease-in-out
             whitespace-nowrap
           "
-        >
-          Tech Stack
-        </span>
-      </button>
+          >
+            Tech Stack
+          </span>
+        </button>
+      </div>
 
       {/* Contact Button */}
-      <button
-        onClick={() => scrollToSection("contact")}
-        className="
+      <div className="flex items-center gap-4 lg:dark:hover:bg-[#2e2e2e] lg:hover:bg-[#dddddd]">
+        <Send className="flex-shrink-0" size={20} />
+        <button
+          onClick={() => scrollToSection("contact")}
+          className="
           flex
           items-center
           py-2
-          pl-4
           pr-2
-          dark:hover:bg-[#2e2e2e]
-          hover:bg-[#eeeeee]
           relative
           w-full
         "
-      >
-        <Send className="flex-shrink-0" size={20} />
-        <span
-          className="
-            ml-2
+        >
+          <span
+            className="
+            ml-4
             opacity-0
             transform
             -translate-x-2
@@ -132,24 +149,33 @@ export default function StickyNav() {
             ease-in-out
             whitespace-nowrap
           "
-        >
-          Contact
-        </span>
-      </button>
+          >
+            Contact
+          </span>
+        </button>
+      </div>
       {/* Dark Mode Toggle */}
-      <button
-        onClick={toggleDarkMode}
-        className=" flex items-center py-2 px-4 hover:bg-[#eeeeee] dark:hover:bg-[#2e2e2e]"
-      >
+      <div className="flex items-center gap-4 lg:dark:hover:bg-[#2e2e2e] lg:hover:bg-[#dddddd]">
         {darkMode ? (
           <Moon className="flex-shrink-0" size={20} />
         ) : (
           <Sun className="flex-shrink-0" size={20} />
         )}{" "}
-        {/* Dark mode icon (sun/moon) */}
-        <p
+        <button
+          onClick={toggleDarkMode}
           className="
-            ml-2
+          flex
+          items-center
+          py-2
+          pr-2
+          relative
+          w-full
+        "
+        >
+          {/* Dark mode icon (sun/moon) */}
+          <p
+            className="
+            ml-4
             opacity-0
             transform
             -translate-x-2
@@ -160,10 +186,11 @@ export default function StickyNav() {
             ease-in-out
             whitespace-nowrap
           "
-        >
-          {darkMode ? "Light Mode" : "Dark Mode"}
-        </p>
-      </button>
+          >
+            {darkMode ? "Light Mode" : "Dark Mode"}
+          </p>
+        </button>
+      </div>
     </motion.div>
   );
 }
