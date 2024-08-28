@@ -52,11 +52,11 @@ export default function StickyNav() {
       transition={{ duration: 2 }}
       className={`gap-4 py-4 px-3 fixed top-96 left-0 transform -translate-y-1/2 z-50 flex flex-col dark:bg-background-darkcontainer bg-white dark:text-text-dark rounded-r-lg shadow-lg overflow-hidden w-12 ${
         isExpanded ? "w-48" : "w-12"
-      } transition-all duration-300 ease-in-out group lg:hover:w-48`}
+      } transition-all duration-300 ease-in-out group lg:hover:w-48 lg:w-12`}
       onClick={toggleNav}
     >
       {/* Projects Button */}
-      <div className="flex items-center gap-4 lg:dark:hover:bg-[#2e2e2e] lg:hover:bg-[#dddddd]">
+      <div className="flex items-center gap-4">
         <BriefcaseBusiness className="flex-shrink-0" size={20} />
         <button
           id="projects"
@@ -64,9 +64,15 @@ export default function StickyNav() {
           className="
           flex
           items-center
+          lg:dark:hover:bg-[#2e2e2e] 
+          lg:hover:bg-[#dddddd]
+          rounded-lg
           py-2
           pr-2
           relative
+          transition-all
+          duration-200
+          ease-in
           w-full
         "
         >
@@ -90,16 +96,22 @@ export default function StickyNav() {
       </div>
 
       {/* Skills Button */}
-      <div className="flex items-center gap-4 lg:dark:hover:bg-[#2e2e2e] lg:hover:bg-[#dddddd]">
+      <div className="flex items-center gap-4">
         <Code className="flex-shrink-0" size={20} />
         <button
           onClick={() => scrollToSection("skills")}
           className="
           flex
           items-center
+          lg:dark:hover:bg-[#2e2e2e] 
+          lg:hover:bg-[#dddddd]
+          rounded-lg
           py-2
           pr-2
           relative
+          transition-all
+          duration-200
+          ease-in
           w-full
         "
         >
@@ -123,16 +135,22 @@ export default function StickyNav() {
       </div>
 
       {/* Contact Button */}
-      <div className="flex items-center gap-4 lg:dark:hover:bg-[#2e2e2e] lg:hover:bg-[#dddddd]">
+      <div className="flex items-center gap-4 ">
         <Send className="flex-shrink-0" size={20} />
         <button
           onClick={() => scrollToSection("contact")}
           className="
           flex
           items-center
+          lg:dark:hover:bg-[#2e2e2e] 
+          lg:hover:bg-[#dddddd]
+          rounded-lg
           py-2
           pr-2
           relative
+          transition-all
+          duration-200
+          ease-in
           w-full
         "
         >
@@ -155,7 +173,7 @@ export default function StickyNav() {
         </button>
       </div>
       {/* Dark Mode Toggle */}
-      <div className="flex items-center gap-4 lg:dark:hover:bg-[#2e2e2e] lg:hover:bg-[#dddddd]">
+      <div className="flex items-center gap-4">
         {darkMode ? (
           <Moon className="flex-shrink-0" size={20} />
         ) : (
@@ -166,9 +184,15 @@ export default function StickyNav() {
           className="
           flex
           items-center
+          lg:dark:hover:bg-[#2e2e2e] 
+          lg:hover:bg-[#dddddd]
+          rounded-lg
           py-2
           pr-2
           relative
+          transition-all
+          duration-300
+          ease-in
           w-full
         "
         >

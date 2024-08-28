@@ -16,7 +16,7 @@ export default function Projects() {
   };
 
   return (
-    <div id="projects" className=" p-10 rounded-lg">
+    <div id="projects" className=" md:p-10 rounded-lg">
       <h2 className="text-4xl font-bold mb-8 text-center">Projects</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
@@ -38,7 +38,8 @@ export default function Projects() {
             />
             <div className="mt-4 flex flex-col">
               <h2 className="text-xl font-bold mb-2 ">{project.name}</h2>
-              <p className="text-xs">{project.description}</p>
+              <p className="text-sm">{project.description}</p>
+              <p className="text-xs mt-2">{project.text}</p>
               <div className="flex gap-4 mt-8">
                 <a href={project.github}>
                   <FaGithub size={16} />
@@ -59,7 +60,7 @@ const projects = [
   {
     name: "Tesla Clone",
     description: "Created with ReactJS & Tailwind",
-    text: "A project crafted to mirror the sleek aesthetics and dynamic features of Tesla's website, highlighting responsive UI components, smooth animations, and a cutting-edge interface. Explore this build to see how ReactJS and Tailwind CSS combine to deliver a fluid, high-performance user experience.",
+    text: "A project crafted to mirror the sleek aesthetics and dynamic features of Tesla's website.",
     video: "/videos/tesla.mov",
     github: "https://github.com/vojtechlevi/tesla-reactjs",
     website: "https://tesla-reactjs-seven.vercel.app/",
