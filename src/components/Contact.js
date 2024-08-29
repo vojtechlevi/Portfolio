@@ -1,6 +1,9 @@
 export default function Contact() {
   return (
-    <div id="contact" className="container mx-auto py-12">
+    <div
+      id="contact"
+      className="h-screen flex flex-col px-5 items-center justify-center"
+    >
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
         Contact Me
       </h2>

@@ -1,50 +1,38 @@
 import React from "react";
 
-export default function StickyNavButton({ id, icon, text, onClick }) {
+export default function StickyNavButton({ id, icon, text, onClick, darkMode }) {
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
     }
+    document.activeElement.blur();
   };
   return (
-    <div className="flex flex-col items-center gap-8 w-full mt-3 ">
-      {icon}
+    <div className="flex flex-col items-center w-full ">
       <button
         id={id}
         onClick={onClick ? onClick : () => scrollToSection(id)}
-        className="
+        className={`
           flex
           flex-col
           items-center
-          lg:dark:hover:bg-[rgb(46,46,46)] 
-          lg:hover:bg-[#dddddd]
-          lg:py-2
+          focus:hover:bg-none
           rounded-lg
+          py-1
+          gap-1
           relative
           transition-bg
           duration-200
           ease-in
           w-full
           transition-colors
+          ${darkMode ? "hover-bg-dark" : "hover-bg-light"}
           
-        "
+        `}
       >
-        <span
-          className="
-            opacity-0
-            transform
-            -translate-y-3
-            group-hover:opacity-100
-            group-hover:translate-y-0
-            transition-all
-            duration-200
-            ease-in-out
-            text-sm
-          "
-        >
-          {text}
-        </span>
+        {icon}
+        <span className="text-[10px] md:text-xs">{text}</span>
       </button>
     </div>
   );

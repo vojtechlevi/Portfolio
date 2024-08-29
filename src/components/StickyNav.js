@@ -19,6 +19,17 @@ export default function StickyNav() {
   }, []);
 
   useEffect(() => {
+    const handleScroll = () => {
+      setIsExpanded(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
     } else {
@@ -52,19 +63,21 @@ export default function StickyNav() {
       ref={navRef}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 2 }}
+      transition={{ delay: 1, duration: 2 }}
       className={`
         w-[90%]
         md:w-[70%]
         lg:w-[50%]
         gap-2
-        px-3 
+        p-2 
         fixed 
         top-0 left-1/2 transform -translate-x-1/2 
         z-50 
         flex
+        items-center
         dark:bg-background-darkcontainer 
         dark:text-text-light
+        bg-white
         rounded-b-xl 
         shadow-lg 
         overflow-hidden
@@ -72,51 +85,46 @@ export default function StickyNav() {
         duration-200
         ease-in
         group
-        ${isExpanded ? "h-28" : "h-12"}
+        
         `}
       onClick={toggleNav}
-      onMouseEnter={() => setIsExpanded(!isExpanded)}
-      onMouseLeave={() => setIsExpanded(false)}
     >
       {/* Projects Button */}
       <StickyNavButton
         id="projects"
-        icon={<BriefcaseBusiness className="flex-shrink-0" size={18} />}
+        icon={<BriefcaseBusiness className="flex-shrink-0 w-4" />}
         text="Projects"
+        darkMode={darkMode}
       />
 
       {/* Contact Button */}
       <StickyNavButton
         id="contact"
-        icon={<Send className="flex-shrink-0" size={18} />}
+        icon={<Send className="flex-shrink-0 w-4" />}
         text="Contact"
-      />
-
-      {/* Skills Button */}
-      <StickyNavButton
-        id="skills"
-        icon={<Code className="flex-shrink-0" size={18} />}
-        text="Tech"
+        darkMode={darkMode}
       />
 
       {/* Download CV Button */}
       <StickyNavButton
-        icon={<File className="flex-shrink-0" size={18} />}
+        icon={<File className="flex-shrink-0 w-4" />}
         text="Resumé"
         onClick={downloadCV}
+        darkMode={darkMode}
       />
 
       {/* Dark Mode Toggle */}
       <StickyNavButton
         icon={
           darkMode ? (
-            <Moon className="flex-shrink-0" size={18} />
+            <Moon className="flex-shrink-0 w-4" />
           ) : (
-            <Sun className="flex-shrink-0" size={18} />
+            <Sun className="flex-shrink-0 w-4" />
           )
         }
         text="Mode"
         onClick={toggleDarkMode}
+        darkMode={darkMode}
       />
     </motion.div>
   );

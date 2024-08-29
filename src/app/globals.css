@@ -30,3 +30,12 @@ body {
     text-wrap: balance;
   }
 }
+
+@media (hover: hover) {
+  .hover-bg-dark:hover {
+    background-color: rgb(46, 46, 46);
+  }
+  .hover-bg-light:hover {
+    background-color: #dddddd;
+  }
+}

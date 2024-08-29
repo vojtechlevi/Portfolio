@@ -22,7 +22,7 @@ export default function Projects() {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="h-[400px] p-4 group relative rounded-xl lg:hover:scale-105 transform transition-transform duration-200 ease-in-out bg-white dark:bg-background-darkcontainer dark:text-text-dark border dark:border-background-darkborder "
+            className=" p-4 group relative rounded-xl lg:hover:scale-105 transform transition-transform duration-200 ease-in-out bg-white dark:bg-background-darkcontainer dark:text-text-dark border dark:border-background-darkborder "
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={() => handleMouseLeave(index)}
           >
@@ -42,7 +42,7 @@ export default function Projects() {
               </h2>
               <p className="text-sm">{project.description}</p>
               <p className="text-sm font-thin">{project.extra}</p>
-              <p className="text-xs mt-2">{project.text}</p>
+              <p className="text-xs mt-2 pb-14">{project.text}</p>
               <div className="absolute bottom-4 left-4 flex gap-4 mt-8 dark:text-text-light">
                 <a href={project.github}>
                   <FaGithub size={18} />
