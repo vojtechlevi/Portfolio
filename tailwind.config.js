@@ -17,8 +17,8 @@ module.exports = {
           darkborder: "#2e2e2e",
         },
         text: {
-          light: "#111827", // Light mode text
-          dark: "#f3f4f6", // Dark mode text
+          light: "#eeeeee", // Light mode text
+          dark: "#4e4e4e", // Dark mode text
         },
         primary: {
           light: "#4f46e5", // Light mode primary color

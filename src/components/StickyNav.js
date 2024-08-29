@@ -8,6 +8,8 @@ import StickyNavButton from "./Buttons";
 export default function StickyNav() {
   const [darkMode, setDarkMode] = useState(true);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
   const navRef = useRef(null);
 
   useEffect(() => {
@@ -52,29 +54,38 @@ export default function StickyNav() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 2 }}
-      className={`gap-4 py-4 px-3 fixed top-96 left-0 transform -translate-y-1/2 z-50 flex flex-col dark:bg-background-darkcontainer bg-white dark:text-text-dark rounded-r-lg shadow-lg overflow-hidden w-12 ${
-        isExpanded ? "w-48" : "w-12"
-      } transition-all duration-200 ease-in group lg:hover:w-48 lg:w-12`}
+      className={`
+        w-[90%]
+        md:w-[70%]
+        lg:w-[50%]
+        gap-2
+        px-3 
+        fixed 
+        top-0 left-1/2 transform -translate-x-1/2 
+        z-50 
+        flex
+        items-center
+        dark:bg-background-darkcontainer 
+        dark:text-text-light
+        rounded-b-lg 
+        shadow-lg 
+        overflow-hidden
+        transition-all
+        duration-200
+        ease-in
+        group
+        ${isHovered ? "h-32" : "h-14"}
+        ${isExpanded ? "h-32" : "h-14"}
+        `}
       onClick={toggleNav}
+      onMouseEnter={() => setIsExpanded(!isExpanded)}
+      onMouseLeave={() => setIsExpanded(false)}
     >
       {/* Projects Button */}
       <StickyNavButton
         id="projects"
-        icon={
-          <BriefcaseBusiness
-            onClick={toggleNav}
-            className="flex-shrink-0"
-            size={18}
-          />
-        }
+        icon={<BriefcaseBusiness onClick={toggleNav} className="" size={18} />}
         text="Projects"
-      />
-
-      {/* Skills Button */}
-      <StickyNavButton
-        id="skills"
-        icon={<Code className="flex-shrink-0" size={18} />}
-        text="Tech Stack"
       />
 
       {/* Contact Button */}
@@ -84,10 +95,17 @@ export default function StickyNav() {
         text="Contact"
       />
 
+      {/* Skills Button */}
+      <StickyNavButton
+        id="skills"
+        icon={<Code className="flex-shrink-0" size={18} />}
+        text="Tech"
+      />
+
       {/* Download CV Button */}
       <StickyNavButton
         icon={<File className="flex-shrink-0" size={18} />}
-        text="Download CV"
+        text="Resumé"
         onClick={downloadCV}
       />
 
@@ -100,7 +118,7 @@ export default function StickyNav() {
             <Sun className="flex-shrink-0" size={18} />
           )
         }
-        text={darkMode ? "Light Mode" : "Dark Mode"}
+        text="Mode"
         onClick={toggleDarkMode}
       />
     </motion.div>

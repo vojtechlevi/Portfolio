@@ -8,39 +8,38 @@ export default function StickyNavButton({ id, icon, text, onClick }) {
     }
   };
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex flex-col items-center gap-8 w-full pb-2 mt-14">
       {icon}
       <button
         id={id}
         onClick={onClick ? onClick : () => scrollToSection(id)}
         className="
           flex
+          flex-col
           items-center
-          lg:dark:hover:bg-[#2e2e2e] 
+          lg:dark:hover:bg-[rgb(46,46,46)] 
           lg:hover:bg-[#dddddd]
           rounded-lg
-          py-2
-          pr-2
           relative
           transition-bg
           duration-200
           ease-in
           w-full
           transition-colors
+          
         "
       >
         <span
           className="
-            ml-4
             opacity-0
             transform
-            -translate-x-2
+            -translate-y-3
             group-hover:opacity-100
-            group-hover:translate-x-0
+            group-hover:translate-y-0
             transition-all
             duration-200
             ease-in-out
-            whitespace-nowrap
+            text-sm
           "
         >
           {text}

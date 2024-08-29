@@ -11,7 +11,8 @@ import Skills from "@/components/Skills";
 export default function Home() {
   return (
     <>
-      <main className="max-w-7xl mx-auto px-16 md:px-6 lg:px-8">
+      {/* <main className="max-w-7xl mx-auto px-16 md:px-6 lg:px-8"> */}
+      <main className="">
         <Hero />
         <Projects />
         <Skills />
