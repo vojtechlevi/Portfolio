@@ -8,7 +8,6 @@ import StickyNavButton from "./Buttons";
 export default function StickyNav() {
   const [darkMode, setDarkMode] = useState(true);
   const [isExpanded, setIsExpanded] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
 
   const navRef = useRef(null);
 
@@ -64,18 +63,16 @@ export default function StickyNav() {
         top-0 left-1/2 transform -translate-x-1/2 
         z-50 
         flex
-        items-center
         dark:bg-background-darkcontainer 
         dark:text-text-light
-        rounded-b-lg 
+        rounded-b-xl 
         shadow-lg 
         overflow-hidden
         transition-all
         duration-200
         ease-in
         group
-        ${isHovered ? "h-32" : "h-14"}
-        ${isExpanded ? "h-32" : "h-14"}
+        ${isExpanded ? "h-28" : "h-12"}
         `}
       onClick={toggleNav}
       onMouseEnter={() => setIsExpanded(!isExpanded)}
@@ -84,7 +81,7 @@ export default function StickyNav() {
       {/* Projects Button */}
       <StickyNavButton
         id="projects"
-        icon={<BriefcaseBusiness onClick={toggleNav} className="" size={18} />}
+        icon={<BriefcaseBusiness className="flex-shrink-0" size={18} />}
         text="Projects"
       />
 

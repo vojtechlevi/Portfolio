@@ -10,7 +10,7 @@ export default function Hero() {
   return (
     <div
       ref={ref}
-      className="relative h-screen flex flex-col justify-center w-full px-8 mx-auto items-center "
+      className="relative h-screen flex flex-col justify-center w-[90%] md:w-[70%] lg:w-[50%] mx-auto  "
     >
       {/* <motion.div
         className="absolute inset-0"
@@ -34,9 +34,9 @@ export default function Hero() {
       </motion.h1>
       <motion.h1
         initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
+        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
         transition={{ duration: 2 }}
-        className="text-3xl md:text-6xl min-w-[80%] lg:min-w-[50%]  font-bold"
+        className="text-3xl md:text-6xl min-w-[80%] lg:min-w-[50%] font-bold"
       >
         I&apos;m Levi Ekström
       </motion.h1>
@@ -44,14 +44,15 @@ export default function Hero() {
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ delay: 0.5, duration: 0.8 }}
-        className="relative mt-4 h-48 max-w-[80%] lg:max-w-[50%] text-base md:text-lg lg:text-xl dark:text-text-dark"
+        className="relative mt-4 h-48   text-base md:text-lg lg:text-xl dark:text-text-dark"
       >
         <ReactTyped
           strings={[
             "- Studying web development with a passion for creating awesome websites. Continually learning and experimenting with new technologies to bring creative visions to life.",
           ]}
           typeSpeed={10}
-          startDelay={1000}
+          startDelay={2000}
+          showCursor={false}
         />
       </motion.div>
       {/* <style jsx>{`

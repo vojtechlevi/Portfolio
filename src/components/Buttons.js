@@ -8,7 +8,7 @@ export default function StickyNavButton({ id, icon, text, onClick }) {
     }
   };
   return (
-    <div className="flex flex-col items-center gap-8 w-full pb-2 mt-14">
+    <div className="flex flex-col items-center gap-8 w-full mt-3 ">
       {icon}
       <button
         id={id}
@@ -19,6 +19,7 @@ export default function StickyNavButton({ id, icon, text, onClick }) {
           items-center
           lg:dark:hover:bg-[rgb(46,46,46)] 
           lg:hover:bg-[#dddddd]
+          lg:py-2
           rounded-lg
           relative
           transition-bg
