@@ -1,3 +1,9 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faGithub,
+  faLinkedin,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
 export default function Contact() {
   return (
     <div
@@ -7,28 +13,35 @@ export default function Contact() {
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
         Contact Me
       </h2>
-      <form className="max-w-lg mx-auto">
-        <input
-          type="text"
-          placeholder="Your Name"
-          className="w-full p-3 mb-4 rounded-lg"
-        />
-        <input
-          type="email"
-          placeholder="Your Email"
-          className="w-full p-3 mb-4 rounded-lg"
-        />
-        <textarea
-          placeholder="Your Message"
-          className="w-full p-3 mb-4 rounded-lg"
-        ></textarea>
-        <button
-          type="submit"
-          className="w-full bg-blue-600 p-3 rounded-lg text-white font-bold hover:bg-blue-700"
+      <div className="flex items-center gap-12 justify-centerspace-y-4">
+        <a
+          href="https://github.com/your-username"
+          target="_blank"
+          rel="noopener noreferrer"
+          className=" hover:underline flex flex-col gap-2"
         >
-          Send Message
-        </button>
-      </form>
+          <FontAwesomeIcon icon={faGithub} />
+          GitHub
+        </a>
+        <a
+          href="https://www.linkedin.com/in/your-username"
+          target="_blank"
+          rel="noopener noreferrer"
+          className=" hover:underline flex flex-col gap-2"
+        >
+          <FontAwesomeIcon icon={faLinkedin} />
+          LinkedIn
+        </a>
+        <a
+          href="https://www.instagram.com/vl.codes"
+          target="_blank"
+          rel="noopener noreferrer"
+          className=" hover:underline flex flex-col gap-2"
+        >
+          <FontAwesomeIcon icon={faInstagram} />
+          Instagram
+        </a>
+      </div>
     </div>
   );
 }

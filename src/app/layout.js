@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className="dark">
       <body
         className={`${inter.className} bg-[#eeeeee] dark:bg-background-dark text-black dark:text-white transition-color
-            duration-300
+            duration-400
             ease-in-out`}
       >
         {children}

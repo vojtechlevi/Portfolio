@@ -20,10 +20,6 @@ module.exports = {
           light: "#eeeeee", // Light mode text
           dark: "#4e4e4e", // Dark mode text
         },
-        primary: {
-          light: "#4f46e5", // Light mode primary color
-          dark: "#818cf8", // Dark mode primary color
-        },
         // Add more custom colors as needed
       },
       backgroundImage: {

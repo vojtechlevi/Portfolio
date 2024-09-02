@@ -96,7 +96,7 @@ export default function Hero() {
             >
               <FontAwesomeIcon
                 icon={skill.icon}
-                className="text-2xl text-[#959595]"
+                className="text-2xl dark:text-[#959595]"
               />
             </motion.div>
           ))}
