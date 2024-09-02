@@ -12,24 +12,6 @@ export default function StickyNav() {
   const navRef = useRef(null);
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsExpanded(false);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
     } else {
@@ -64,6 +46,7 @@ export default function StickyNav() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 1, duration: 2 }}
+      style={{ willChange: "opacity, transform" }}
       className={`
         w-[90%]
         md:w-[70%]
@@ -78,13 +61,6 @@ export default function StickyNav() {
         dark:bg-background-darkcontainer 
         dark:text-text-light
         bg-white
-        rounded-b-xl 
-        shadow-lg 
-        overflow-hidden
-        transition-all
-        duration-200
-        ease-in
-        group
         
         `}
       onClick={toggleNav}

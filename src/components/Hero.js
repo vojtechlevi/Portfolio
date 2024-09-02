@@ -1,5 +1,5 @@
 "use client";
-import { delay, motion, useInView } from "framer-motion";
+import { delay, motion, useInView, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { ReactTyped } from "react-typed";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,6 +11,8 @@ import {
   faNodeJs,
   faGit,
 } from "@fortawesome/free-brands-svg-icons";
+
+const shouldReduceMotion = useReducedMotion;
 
 const skills = [
   { name: "HTML", icon: faHtml5 },
@@ -26,19 +28,19 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      delayChildren: 4,
+      delayChildren: 1,
       staggerChildren: 0.1,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 0 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 1.5, // Duration of each item's animation
+      duration: 0.5,
     },
   },
 };
@@ -69,9 +71,29 @@ export default function Hero() {
         I&apos;m Levi Ekström
       </motion.h1>
       <motion.div
+        className="flex gap-4 mt-3"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {skills.map((skill, index) => (
+          <motion.div
+            key={index}
+            className="flex flex-col justify-center items-center"
+            style={{ willChange: "transform" }}
+            variants={itemVariants}
+          >
+            <FontAwesomeIcon
+              icon={skill.icon}
+              className="text-2xl dark:text-[#959595]"
+            />
+          </motion.div>
+        ))}
+      </motion.div>
+      <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
+        transition={{ delay: 0.5 }}
         className="relative mt-4 h-28 text-base md:text-lg lg:text-xl dark:text-text-dark"
       >
         <ReactTyped
@@ -82,25 +104,6 @@ export default function Hero() {
           startDelay={1000}
           showCursor={false}
         />
-        <motion.div
-          className="flex gap-4 mt-3"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {skills.map((skill, index) => (
-            <motion.div
-              key={index}
-              className="flex flex-col justify-center items-center"
-              variants={itemVariants}
-            >
-              <FontAwesomeIcon
-                icon={skill.icon}
-                className="text-2xl dark:text-[#959595]"
-              />
-            </motion.div>
-          ))}
-        </motion.div>
       </motion.div>
     </div>
   );
