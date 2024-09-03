@@ -57,6 +57,7 @@ export default function StickyNav() {
         top-0 left-1/2 transform -translate-x-1/2 
         z-50 
         flex
+        rounded-b-xl
         items-center
         dark:bg-background-darkcontainer 
         dark:text-text-light

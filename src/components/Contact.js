@@ -15,7 +15,7 @@ export default function Contact() {
       </h2>
       <div className="flex items-center gap-12 justify-centerspace-y-4">
         <a
-          href="https://github.com/your-username"
+          href="https://github.com/vojtechlevi"
           target="_blank"
           rel="noopener noreferrer"
           className=" hover:underline flex flex-col gap-2"
@@ -24,7 +24,7 @@ export default function Contact() {
           GitHub
         </a>
         <a
-          href="https://www.linkedin.com/in/your-username"
+          href="www.linkedin.com/in/leviekström"
           target="_blank"
           rel="noopener noreferrer"
           className=" hover:underline flex flex-col gap-2"
